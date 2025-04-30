@@ -10,31 +10,35 @@ export default function HeroSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative flex flex-col justify-center items-center text-center max-w-4xl mx-auto min-h-screen px-4"
+      className="relative flex flex-col justify-center items-center text-center max-w-4xl mx-auto min-h-screen px-4 py-12"
     >
-      {/* Soft radial background */}
-      <div className="absolute top-40 w-[300px] h-[300px] rounded-full bg-[#1e2a38]/5 blur-3xl z-0" />
-
-      {/* Animated Avatar */}
+      {/* Soft animated ring behind avatar */}
       <motion.div
-        className="z-10 mb-6"
-        initial={{ opacity: 0, scale: 0.95 }}
+        className="absolute top-36 w-[300px] h-[300px] rounded-full bg-[#1e2a38]/10 blur-3xl z-0"
+        animate={{ scale: [1, 1.05, 1], opacity: [0.15, 0.2, 0.15] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+
+      {/* Avatar */}
+      <motion.div
+        className="z-10 mb-5"
+        initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
         <Image
           src={avatar}
           alt="Frank Camp Avatar"
-          width={220}
-          height={220}
+          width={200}
+          height={200}
           className="rounded-full border shadow-lg ring-1 ring-gray-200"
           priority
         />
       </motion.div>
 
-      {/* Headline */}
+      {/* Title */}
       <motion.h1
-        className="text-4xl font-bold tracking-tight mb-4 text-[#1e2a38] z-10"
+        className="text-4xl sm:text-5xl font-bold tracking-tight mb-2 text-[#1e2a38] z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
@@ -42,32 +46,32 @@ export default function HeroSection() {
         Frank Camp
       </motion.h1>
 
-      {/* Subheadline */}
+      {/* Subtitle */}
       <motion.p
-        className="text-lg text-gray-600 max-w-xl z-10"
-        initial={{ opacity: 0, y: 10 }}
+        className="text-sm uppercase tracking-wider text-gray-500 mb-3 mt-3 z-10"
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.4 }}
       >
-        Full Stack Engineer · Systems Architect · Strategic Product Partner
+        Strategic Engineering · Software Architecture · Product Execution
       </motion.p>
 
       {/* CTAs */}
       <motion.div
-        className="mt-8 flex flex-col sm:flex-row items-center gap-4 z-10"
+        className="mt-3 flex flex-col sm:flex-row items-center gap-4 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
       >
         <a
           href="#projects"
-          className="bg-[#1e2a38] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0f172a] transition"
+          className="bg-[#1e2a38] text-white px-6 py-3 rounded-md text-sm font-medium shadow-sm hover:shadow-md hover:bg-[#0f172a] transition"
         >
           View Selected Work
         </a>
         <a
           href="mailto:frank@zerotoone.cloud"
-          className="bg-white border border-gray-300 text-[#1e2a38] px-6 py-3 rounded-md text-sm font-medium hover:bg-gray-50 transition"
+          className="bg-white border border-gray-300 text-[#1e2a38] px-6 py-3 rounded-md text-sm font-medium shadow-sm hover:shadow-md hover:bg-gray-50 transition"
         >
           Contact Me
         </a>

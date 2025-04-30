@@ -10,7 +10,7 @@ export default function ContactSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative w-full px-4 py-24 flex justify-center items-center bg-white"
+      className="relative w-full px-4 py-24 flex justify-center items-center bg-white min-h-screen overflow-hidden"
     >
       {/* Background accent blur */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 via-white to-gray-100 opacity-70 pointer-events-none" />
