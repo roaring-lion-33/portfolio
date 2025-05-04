@@ -221,7 +221,7 @@ const projects = [
       { phase: "Week 2", detail: "Interactive components and motion support" },
       { phase: "Week 3", detail: "Docs, polish, and Vercel deployment" },
     ],
-    images: ["/images/mvp-kit-ui-1.png", "/images/mvp-kit-ui-2.png"],
+    images: [],
     repo: "https://github.com/ZeroToOne-cloud/mvp-ui-kit",
     tag: "Component Library",
   },
@@ -414,22 +414,27 @@ export default function ProjectShowcase() {
                     Switch to {view === "desktop" ? "Mobile" : "Desktop"}
                   </button>
 
-                  <div className="relative rounded-xl overflow-hidden shadow-lg">
-                    <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-0.5 transform rotate-45 origin-top-right translate-x-4 -translate-y-2 shadow">
-                      Built With {open.tech[0]}
+                  {(
+                    view === "desktop" ? open.images?.[0] : open.images?.[1]
+                  ) ? (
+                    <div className="relative rounded-xl overflow-hidden shadow-lg">
+                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-0.5 transform rotate-45 origin-top-right translate-x-4 -translate-y-2 shadow">
+                        Built With {open.tech[0]}
+                      </div>
+                      <div className="absolute inset-0 bg-blue-100 blur-2xl opacity-30 z-[-1]" />
+                      <Image
+                        src={
+                          view === "desktop" ? open.images[0] : open.images[1]
+                        }
+                        alt={`${view} UI`}
+                        width={view === "desktop" ? 1280 : 260}
+                        height={view === "desktop" ? 800 : 520}
+                        className={`${
+                          view === "desktop" ? "rounded-xl" : "rounded-[2rem]"
+                        } shadow`}
+                      />
                     </div>
-                    <div className="absolute inset-0 bg-blue-100 blur-2xl opacity-30 z-[-1]" />
-                    <Image
-                      src={view === "desktop" ? open.images[0] : open.images[1]}
-                      alt={`${view} UI`}
-                      width={view === "desktop" ? 1280 : 260}
-                      height={view === "desktop" ? 800 : 520}
-                      className={`${
-                        view === "desktop" ? "rounded-xl" : "rounded-[2rem]"
-                      } shadow`}
-                    />
-                  </div>
-
+                  ) : null}
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     {open.live && (
                       <motion.a

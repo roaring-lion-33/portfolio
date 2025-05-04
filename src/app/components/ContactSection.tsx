@@ -90,7 +90,7 @@ export default function ContactSection() {
         </p>
 
         <a
-          href="mailto:frank@zerotoone.cloud"
+          href="mailto:frank@frankcamp.tech"
           className="inline-block bg-[#1e2a38] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0f172a] transition"
         >
           Schedule a Conversation
