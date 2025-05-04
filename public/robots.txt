@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://frankcamp.tech
+
+# Sitemaps
+Sitemap: https://frankcamp.tech/sitemap.xml

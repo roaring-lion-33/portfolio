@@ -24,14 +24,7 @@ export const metadata: Metadata = {
       "Explore projects and skills of Frank Camp, a developer building performant apps with clarity and craft.",
     url: "https://frankcamp.tech",
     siteName: "Frank Camp Portfolio",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Frank Camp Portfolio Screenshot",
-      },
-    ],
+    images: ["https://frankcamp.tech/opengraph-image"],
     type: "website",
     locale: "en_US",
   },

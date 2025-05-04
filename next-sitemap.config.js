@@ -1,13 +1,9 @@
-const siteUrl = "https://frankcamp.tech";
-
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl,
+  siteUrl: "https://frankcamp.tech", // ← your live domain
   generateRobotsTxt: true,
-  generateIndexSitemap: false,
-  sitemapSize: 7000,
-  changefreq: "weekly",
-  priority: 0.7,
-  exclude: ["/private/*"],
+  sitemapSize: 5000,
+  exclude: ["/private"], // optional
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },
