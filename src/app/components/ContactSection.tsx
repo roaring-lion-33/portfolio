@@ -2,10 +2,48 @@
 
 import { motion } from "framer-motion";
 
-export const metadata = {
-  title: "Contact",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Frank Camp",
   description:
     "Get in touch with Frank Camp — available for freelance, part-time contracts, or technical advising.",
+  keywords: [
+    "Frank Camp contact",
+    "freelance developer",
+    "technical advisor",
+    "hire full stack engineer",
+    "Next.js freelance",
+    "Ruby on Rails consulting",
+  ],
+  openGraph: {
+    title: "Contact Frank Camp",
+    description:
+      "Reach out to Frank Camp for consulting, architecture, or MVP execution support.",
+    url: "https://frankcamp.tech/contact",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Contact",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Frank Camp",
+    description:
+      "Get in touch for freelance work, strategic architecture, or MVP delivery.",
+    creator: "@FrankCampTech",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function ContactSection() {

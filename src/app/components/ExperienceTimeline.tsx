@@ -2,6 +2,53 @@
 
 import { motion } from "framer-motion";
 import { Briefcase, Code, Rocket, Download } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Experience Timeline – Frank Camp",
+  description:
+    "Frank Camp's professional experience as a systems architect, director of engineering, and technical founder. Explore 12+ years of high-impact technical leadership.",
+  keywords: [
+    "Frank Camp",
+    "Engineering Experience",
+    "Software Architecture",
+    "Technical Founder",
+    "Director of Engineering",
+    "Rails",
+    "React",
+    "AWS",
+    "Resume",
+    "Work History",
+  ],
+  alternates: {
+    canonical: "https://frankcamp.tech/#experience",
+  },
+  openGraph: {
+    title: "Experience Timeline – Frank Camp",
+    description:
+      "Explore Frank Camp's career history including roles at MRI Software, eGent, and Westwood One. Focused on scalable systems, cloud-native apps, and team leadership.",
+    url: "https://frankcamp.tech/#experience",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Experience Timeline",
+      },
+    ],
+    type: "profile",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frank Camp – Engineering Experience",
+    description:
+      "Dive into the timeline of Frank Camp's technical leadership across startups and enterprise platforms.",
+    creator: "@FrankCampTech",
+    images: ["/og-image.jpg"],
+  },
+};
 
 const items = [
   {

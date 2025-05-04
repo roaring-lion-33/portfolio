@@ -4,6 +4,55 @@ import Image from "next/image";
 import avatar from "../../../public/avatar.png";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Frank Camp – Full Stack Developer, Systems Architect, Founder",
+  description:
+    "Frank Camp builds scalable software products with clarity, speed, and craft. Explore his portfolio of full stack projects across React, Next.js, Ruby on Rails, and cloud-native systems.",
+  keywords: [
+    "Frank Camp",
+    "Full Stack Developer",
+    "Software Architect",
+    "React",
+    "Next.js",
+    "Ruby on Rails",
+    "TypeScript",
+    "Cloud-Native",
+    "MVP Development",
+    "Product Engineering",
+    "Portfolio",
+  ],
+  openGraph: {
+    title: "Frank Camp – Full Stack Developer & Architect",
+    description:
+      "Portfolio and personal site of Frank Camp. Dive into his high-performance full stack apps, SaaS platforms, and product-driven engineering philosophy.",
+    url: "https://frankcamp.tech",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Portfolio – Hero Section",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frank Camp – Full Stack Developer",
+    description:
+      "Explore full stack projects and product-driven software architecture by Frank Camp.",
+    creator: "@FrankCampTech",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function HeroSection() {
   return (

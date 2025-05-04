@@ -1,11 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "About",
+export const metadata: Metadata = {
+  title: "About Frank Camp",
   description:
     "Meet Frank Camp – a senior software engineer focused on scalable, high-performance full stack applications.",
+  keywords: [
+    "Frank Camp",
+    "Full Stack Developer",
+    "Software Engineer",
+    "React Developer",
+    "Ruby on Rails",
+    "Engineering Leadership",
+    "Cloud Architecture",
+    "MVP Expert",
+  ],
+  alternates: {
+    canonical: "https://frankcamp.tech/about",
+  },
+  openGraph: {
+    title: "About Frank Camp",
+    description:
+      "Get to know Frank Camp – an experienced full stack developer and engineering leader delivering scalable, high-performance platforms.",
+    url: "https://frankcamp.tech/about",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Portfolio",
+      },
+    ],
+    type: "profile",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Frank Camp",
+    description:
+      "Senior full stack engineer specializing in React, Rails, and cloud-native architecture.",
+    creator: "@FrankCampTech",
+    images: ["/og-image.jpg"],
+  },
 };
 
 const paragraphVariants = {

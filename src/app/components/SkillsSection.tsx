@@ -2,23 +2,81 @@
 
 import { motion } from "framer-motion";
 import { icons, Code, Server, Cloud, Target } from "lucide-react";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Skills",
+export const metadata: Metadata = {
+  title: "Skills | Frank Camp – Full Stack Developer",
   description:
-    "Technical skills and frameworks used by Frank Camp, including React, Next.js, Ruby on Rails, PostgreSQL, AWS, and more.",
+    "Explore Frank Camp's technical skill set including Next.js, React, Tailwind, Ruby on Rails, AWS, Docker, and product strategy tools for building scalable applications.",
+  keywords: [
+    "Frank Camp skills",
+    "full stack developer",
+    "Next.js",
+    "React developer",
+    "Ruby on Rails",
+    "AWS",
+    "Docker",
+    "DevOps",
+    "technical leadership",
+    "product engineering",
+    "frontend backend stack",
+  ],
+  openGraph: {
+    title: "Frank Camp – Developer Skill Stack",
+    description:
+      "Frank Camp's full stack expertise includes frontend frameworks, backend systems, DevOps tools, and strategic engineering capabilities.",
+    url: "https://frankcamp.tech#skills",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-skills.jpg", // Optional: generate a custom OG image
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Skill Stack",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frank Camp – Technical Skills",
+    description:
+      "See what technologies and tools Frank Camp uses across the full stack.",
+    images: ["/og-skills.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-const groupedSkills = [
+// --- Types ---
+type SkillLevel = "Expert" | "Advanced" | "Proficient" | "Beginner";
+
+type SkillItem = {
+  name: string;
+  icon: keyof typeof icons;
+  level: SkillLevel;
+};
+
+type SkillGroup = {
+  title: string;
+  icon: React.ElementType;
+  items: SkillItem[];
+};
+
+// --- Data ---
+const groupedSkills: SkillGroup[] = [
   {
     title: "Frontend",
     icon: Code,
     items: [
       { name: "Next.js", icon: "Box", level: "Expert" },
-      { name: "React", icon: "Layout", level: "Expert" },
+      { name: "React", icon: "Code", level: "Expert" },
       { name: "Tailwind CSS", icon: "Wind", level: "Advanced" },
-      { name: "TypeScript", icon: "Code2", level: "Advanced" },
-      { name: "Framer Motion", icon: "ActivitySquare", level: "Proficient" },
+      { name: "TypeScript", icon: "Code", level: "Advanced" },
+      { name: "Framer Motion", icon: "Activity", level: "Proficient" },
     ],
   },
   {
@@ -28,7 +86,7 @@ const groupedSkills = [
       { name: "Ruby on Rails", icon: "Gem", level: "Expert" },
       { name: "PostgreSQL", icon: "Database", level: "Advanced" },
       { name: "Redis", icon: "Zap", level: "Proficient" },
-      { name: "Node.js", icon: "TerminalSquare", level: "Proficient" },
+      { name: "Node.js", icon: "Terminal", level: "Proficient" },
     ],
   },
   {
@@ -47,19 +105,20 @@ const groupedSkills = [
     items: [
       { name: "MVP Scoping", icon: "Target", level: "Expert" },
       { name: "System Design", icon: "CircuitBoard", level: "Advanced" },
-      { name: "Agile Delivery", icon: "BarChart4", level: "Advanced" },
+      { name: "Agile Delivery", icon: "ChartBar", level: "Advanced" },
       { name: "Team Leadership", icon: "Users", level: "Expert" },
     ],
   },
 ];
 
-const levelColorMap = {
+const levelColorMap: Record<SkillLevel, string> = {
   Expert: "bg-blue-100 text-blue-800 border-blue-200",
   Advanced: "bg-green-100 text-green-800 border-green-200",
   Proficient: "bg-yellow-100 text-yellow-800 border-yellow-200",
   Beginner: "bg-gray-100 text-gray-600 border-gray-200",
 };
 
+// --- Component ---
 export default function SkillsSection() {
   return (
     <motion.section
@@ -113,10 +172,8 @@ export default function SkillsSection() {
 
             <div className="grid grid-cols-2 gap-3">
               {group.items.map((tech) => {
-                const badgeClass =
-                  levelColorMap[tech.level] ||
-                  "bg-gray-100 text-gray-600 border-gray-200";
-                const Icon = icons[tech.icon] || icons["Box"];
+                const badgeClass = levelColorMap[tech.level];
+                const Icon = icons[tech.icon] || icons.Box;
                 return (
                   <motion.div
                     key={tech.name}
@@ -145,7 +202,6 @@ export default function SkillsSection() {
         ))}
       </div>
 
-      {/* Footer CTA */}
       <motion.div
         className="mt-12 text-center relative z-10"
         initial={{ opacity: 0, y: 10 }}

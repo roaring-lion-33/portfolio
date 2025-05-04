@@ -12,6 +12,52 @@ import {
   Lock,
   X,
 } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects | Frank Camp – Full Stack Developer",
+  description:
+    "Explore full stack projects by Frank Camp, including SaaS platforms, UI kits, and mobile apps built with React, Rails, and Tailwind. See GitHub highlights and live demos.",
+  keywords: [
+    "Frank Camp portfolio",
+    "Next.js developer projects",
+    "Ruby on Rails engineer",
+    "Tailwind UI kit",
+    "MVP builder",
+    "SaaS platform example",
+    "mobile app portfolio",
+    "React components",
+    "GitHub showcase",
+  ],
+  openGraph: {
+    title: "Frank Camp – Full Stack Project Showcase",
+    description:
+      "Dive into a showcase of real-world projects by Frank Camp, from SaaS platforms and mobile apps to polished UI component kits.",
+    url: "https://frankcamp.tech#projects",
+    siteName: "Frank Camp Portfolio",
+    images: [
+      {
+        url: "/og-projects.jpg", // Optional: create this screenshot preview
+        width: 1200,
+        height: 630,
+        alt: "Frank Camp Project Showcase",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frank Camp Project Showcase",
+    description:
+      "Explore real-world full stack work by Frank Camp, software engineer and systems architect.",
+    images: ["/og-projects.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const projects = [
   {
@@ -182,7 +228,9 @@ const projects = [
 ];
 
 export default function ProjectShowcase() {
-  const [open, setOpen] = useState(null);
+  type Project = (typeof projects)[number];
+
+  const [open, setOpen] = useState<Project | null>(null);
   const [view, setView] = useState("desktop");
 
   const toggleView = () => setView(view === "desktop" ? "mobile" : "desktop");
