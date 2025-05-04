@@ -406,35 +406,42 @@ export default function ProjectShowcase() {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <button
-                    onClick={toggleView}
-                    className="mb-4 text-sm text-blue-600 hover:underline flex items-center gap-1"
-                  >
-                    <SwitchCamera className="w-4 h-4" />
-                    Switch to {view === "desktop" ? "Mobile" : "Desktop"}
-                  </button>
+                  {open.images.length > 1 && (
+                    <button
+                      onClick={toggleView}
+                      className="mb-4 text-sm text-blue-600 hover:underline flex items-center gap-1"
+                    >
+                      <SwitchCamera className="w-4 h-4" />
+                      Switch to {view === "desktop" ? "Mobile" : "Desktop"}
+                    </button>
+                  )}
 
-                  {(
-                    view === "desktop" ? open.images?.[0] : open.images?.[1]
-                  ) ? (
-                    <div className="relative rounded-xl overflow-hidden shadow-lg">
-                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-0.5 transform rotate-45 origin-top-right translate-x-4 -translate-y-2 shadow">
-                        Built With {open.tech[0]}
+                  {/* Determine the fallback image to display */}
+                  {(() => {
+                    const imageToShow =
+                      view === "desktop"
+                        ? open.images?.[0] || open.images?.[1]
+                        : open.images?.[1] || open.images?.[0];
+
+                    return imageToShow ? (
+                      <div className="relative rounded-xl overflow-hidden shadow-lg">
+                        <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-0.5 transform rotate-45 origin-top-right translate-x-4 -translate-y-2 shadow">
+                          Built With {open.tech[0]}
+                        </div>
+                        <div className="absolute inset-0 bg-blue-100 blur-2xl opacity-30 z-[-1]" />
+                        <Image
+                          src={imageToShow}
+                          alt={`${view} UI`}
+                          width={view === "desktop" ? 1280 : 260}
+                          height={view === "desktop" ? 800 : 520}
+                          className={`${
+                            view === "desktop" ? "rounded-xl" : "rounded-[2rem]"
+                          } shadow`}
+                        />
                       </div>
-                      <div className="absolute inset-0 bg-blue-100 blur-2xl opacity-30 z-[-1]" />
-                      <Image
-                        src={
-                          view === "desktop" ? open.images[0] : open.images[1]
-                        }
-                        alt={`${view} UI`}
-                        width={view === "desktop" ? 1280 : 260}
-                        height={view === "desktop" ? 800 : 520}
-                        className={`${
-                          view === "desktop" ? "rounded-xl" : "rounded-[2rem]"
-                        } shadow`}
-                      />
-                    </div>
-                  ) : null}
+                    ) : null;
+                  })()}
+
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     {open.live && (
                       <motion.a

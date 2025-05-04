@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Ruby on Rails",
     "Portfolio",
     "Software Engineer",
+    "React Developer",
+    "Franklin Camp Tech",
+    "Franklin Camp Denver",
+    "Frank Camp Software Engineer",
+    "Franklin Levi Camp",
   ],
   metadataBase: new URL("https://frankcamp.tech"),
   openGraph: {
@@ -65,6 +70,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0f172a" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
         <script
           type="application/ld+json"
