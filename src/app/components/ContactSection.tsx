@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 
+export const metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Frank Camp — available for freelance, part-time contracts, or technical advising.",
+};
+
 export default function ContactSection() {
   return (
     <motion.section
@@ -10,11 +16,8 @@ export default function ContactSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative w-full px-4 py-24 flex justify-center items-center bg-white min-h-screen overflow-hidden"
+      className="relative w-full px-4 py-24 flex justify-center items-center bg-flate-50 min-h-screen overflow-hidden"
     >
-      {/* Background accent blur */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 via-white to-gray-100 opacity-70 pointer-events-none" />
-
       {/* Contact Card */}
       <div className="max-w-xl w-full bg-white/80 backdrop-blur-lg border border-gray-200 shadow-md rounded-xl px-8 py-10 text-center">
         <motion.h2

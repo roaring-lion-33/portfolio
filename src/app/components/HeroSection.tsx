@@ -3,6 +3,7 @@
 import Image from "next/image";
 import avatar from "../../../public/avatar.png";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -76,6 +77,33 @@ export default function HeroSection() {
           Contact Me
         </a>
       </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        className="absolute bottom-10 z-10 text-[#1e2a38] opacity-50 cursor-pointer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+      >
+        <a href="#about" className="block">
+          <ChevronDown className="w-6 h-6 animate-bounce-slow" />
+        </a>
+      </motion.div>
+
+      <style jsx global>{`
+        @keyframes bounce-slow {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(6px);
+          }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 2.4s infinite;
+        }
+      `}</style>
     </motion.section>
   );
 }

@@ -20,11 +20,23 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
+
 
 html {
   font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(145deg, rgba(30,41,59,0.5), transparent),
+    url('/svg/grid.svg'),
+    url('/noise.png');
+  background-size: cover, 40px 40px, 300px 300px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
 }

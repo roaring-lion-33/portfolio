@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 
+export const metadata = {
+  title: "About",
+  description:
+    "Meet Frank Camp – a senior software engineer focused on scalable, high-performance full stack applications.",
+};
+
 const paragraphVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
@@ -25,19 +31,18 @@ export default function AboutSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="relative w-full mx-auto min-h-screen flex flex-col justify-center px-4 py-24 z-10 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center px-4 py-24 overflow-hidden bg-slate-50"
     >
-      {/* Animated ambient gradient background */}
+      {/* Animated glow ring behind card */}
       <motion.div
-        className="absolute inset-0 bg-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ duration: 1.2 }}
+        className="absolute w-[480px] h-[480px] rounded-full bg-[#1e2a38]/10 blur-3xl z-0"
+        animate={{ scale: [1, 1.04, 1], opacity: [0.15, 0.22, 0.15] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Glassmorphic Card */}
+      {/* Glassmorphic content card */}
       <motion.div
-        className="z-10 rounded-xl bg-white/60 backdrop-blur-lg border border-white/30 shadow-xl px-8 py-12 max-w-3xl mx-auto"
+        className="relative z-10 max-w-3xl w-full rounded-xl bg-white/60 backdrop-blur-lg border border-white/30 shadow-2xl px-8 py-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -71,6 +76,21 @@ export default function AboutSection() {
             {text}
           </motion.p>
         ))}
+        <motion.div
+          className="mt-10 border-t pt-6 border-gray-200"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: paragraphs.length * 0.15 + 0.8,
+            duration: 0.6,
+            ease: "easeOut",
+          }}
+        >
+          <p className="italic text-gray-600 text-base leading-relaxed mb-3">
+            “Great software isn’t just built — it’s architected, refined, and
+            delivered with purpose.”
+          </p>
+        </motion.div>
       </motion.div>
     </motion.section>
   );
