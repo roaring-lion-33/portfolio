@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="relative z-10 text-gray-900 bg-slate-50 min-h-screen">
+    <main className="relative bg-gradient-to-br from-slate-50 to-white text-gray-900 min-h-screen antialiased selection:bg-blue-100 selection:text-blue-900 ">
       <HeroSection />
       <AboutSection />
       <ExperienceTimeline />

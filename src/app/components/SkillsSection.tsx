@@ -64,6 +64,7 @@ export default function SkillsSection() {
   return (
     <motion.section
       id="skills"
+      aria-labelledby="skills-heading"
       initial={{ opacity: 0, scale: 0.98 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -74,7 +75,8 @@ export default function SkillsSection() {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full bg-[#1e2a38]/5 blur-3xl z-0 pointer-events-none" />
 
       <motion.h2
-        className="text-4xl font-bold text-center mb-2 text-[#1e2a38] relative z-10"
+        id="skills-heading"
+        className="text-4xl font-bold text-center mb-2 text-[#1e2a38] relative z-10 tracking-tight"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
@@ -118,11 +120,11 @@ export default function SkillsSection() {
                 return (
                   <motion.div
                     key={tech.name}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    whileHover={{ scale: 1.02 }}
                     className="group bg-white border border-gray-200 rounded-md p-4 shadow-sm hover:shadow-md hover:border-[#1e2a38] transition duration-200 flex flex-col items-center justify-center text-center"
                   >
                     <div
-                      className={`w-9 h-9 flex items-center justify-center mb-2 rounded-full border-2 ${badgeClass} transition`}
+                      className={`w-9 h-9 flex items-center justify-center mb-2 rounded-full border-2 ${badgeClass}`}
                     >
                       <Icon className="w-5 h-5 text-[#1e2a38]" />
                     </div>
@@ -151,12 +153,12 @@ export default function SkillsSection() {
         transition={{ delay: 0.6 }}
       >
         <p className="text-sm text-gray-500">
-          Curious how I apply these in real projects?{" "}
+          Want to see these in action?{" "}
           <a
             href="#projects"
-            className="text-blue-600 underline hover:text-blue-800 transition"
+            className="text-blue-600 underline underline-offset-2 hover:text-blue-800 transition"
           >
-            View Selected Work →
+            Explore featured projects →
           </a>
         </p>
       </motion.div>

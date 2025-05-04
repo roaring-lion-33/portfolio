@@ -11,7 +11,7 @@ export default function HeroSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative flex flex-col justify-center items-center text-center max-w-4xl mx-auto min-h-screen px-4 py-12"
+      className="relative flex flex-col justify-center items-center text-center max-w-4xl mx-auto min-h-screen px-4 py-24 sm:py-32"
     >
       {/* Soft animated ring behind avatar */}
       <motion.div
@@ -29,7 +29,7 @@ export default function HeroSection() {
       >
         <Image
           src={avatar}
-          alt="Frank Camp Avatar"
+          alt="Portrait of Frank Camp"
           width={200}
           height={200}
           className="rounded-full border shadow-lg ring-1 ring-gray-200"
@@ -37,7 +37,7 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Title */}
+      {/* Name */}
       <motion.h1
         className="text-4xl sm:text-5xl font-bold tracking-tight mb-2 text-[#1e2a38] z-10"
         initial={{ opacity: 0, y: 10 }}
@@ -49,10 +49,11 @@ export default function HeroSection() {
 
       {/* Subtitle */}
       <motion.p
-        className="text-sm uppercase tracking-wider text-gray-500 mb-3 mt-3 z-10"
+        className="text-sm uppercase tracking-wider text-gray-500 mb-4 mt-3 z-10"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
+        role="doc-subtitle"
       >
         Strategic Engineering · Software Architecture · Product Execution
       </motion.p>
@@ -66,13 +67,13 @@ export default function HeroSection() {
       >
         <a
           href="#projects"
-          className="bg-[#1e2a38] text-white px-6 py-3 rounded-md text-sm font-medium shadow-sm hover:shadow-md hover:bg-[#0f172a] transition"
+          className="inline-flex items-center justify-center rounded-md bg-[#1e2a38] text-white px-6 py-3 text-sm font-medium shadow-sm hover:shadow-md hover:bg-[#0f172a] transition"
         >
           View Selected Work
         </a>
         <a
           href="mailto:frank@zerotoone.cloud"
-          className="bg-white border border-gray-300 text-[#1e2a38] px-6 py-3 rounded-md text-sm font-medium shadow-sm hover:shadow-md hover:bg-gray-50 transition"
+          className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white text-[#1e2a38] px-6 py-3 text-sm font-medium shadow-sm hover:shadow-md hover:bg-gray-50 transition"
         >
           Contact Me
         </a>
@@ -85,7 +86,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
       >
-        <a href="#about" className="block">
+        <a href="#about" aria-label="Scroll down">
           <ChevronDown className="w-6 h-6 animate-bounce-slow" />
         </a>
       </motion.div>

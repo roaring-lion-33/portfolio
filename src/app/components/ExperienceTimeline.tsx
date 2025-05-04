@@ -75,8 +75,12 @@ const items = [
 
 export default function ExperienceTimeline() {
   return (
-    <section className="relative w-full bg-slate-50 overflow-hidden px-4 py-32">
-      {/* Shared radial glow ring backdrop */}
+    <section
+      id="experience"
+      aria-labelledby="experience-heading"
+      className="relative w-full overflow-hidden px-4 py-32"
+    >
+      {/* Glow background ring */}
       <motion.div
         className="absolute left-1/2 top-12 -translate-x-1/2 w-[480px] h-[480px] rounded-full bg-[#1e2a38]/10 blur-3xl z-0"
         animate={{ scale: [1, 1.04, 1], opacity: [0.12, 0.18, 0.12] }}
@@ -90,7 +94,10 @@ export default function ExperienceTimeline() {
         viewport={{ once: true }}
         className="relative z-10 max-w-4xl mx-auto"
       >
-        <h2 className="text-3xl font-bold text-center text-[#1e2a38] mb-4">
+        <h2
+          id="experience-heading"
+          className="text-3xl font-bold text-center text-[#1e2a38] mb-4"
+        >
           Experience Timeline
         </h2>
 
@@ -103,9 +110,9 @@ export default function ExperienceTimeline() {
           12+ years building resilient systems and leading technical teams
         </motion.p>
 
-        <div className="relative  pl-6 space-y-12">
+        <ul className="relative pl-6 space-y-12">
           {items.map((item, i) => (
-            <motion.div
+            <motion.li
               key={i}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -113,7 +120,7 @@ export default function ExperienceTimeline() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Animated vertical connector line */}
+              {/* Vertical line */}
               <motion.div
                 className="absolute left-[-1px] top-6 w-0.5 bg-[#1e2a38]/50"
                 initial={{ height: 0 }}
@@ -124,41 +131,43 @@ export default function ExperienceTimeline() {
                   ease: "easeInOut",
                 }}
               />
-              <div className="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-[#1e2a38] flex items-center justify-center shadow-md">
+
+              {/* Icon */}
+              <div className="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-[#1e2a38] flex items-center justify-center shadow-md ring-2 ring-white">
                 {item.icon}
               </div>
+
+              {/* Content */}
               <div className="ml-6">
                 <h3 className="text-lg font-semibold text-[#1e2a38]">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-500 mb-1">{item.date}</p>
-                <>
-                  <p className="text-base text-gray-700 leading-relaxed mb-1">
-                    {item.description}
+                <p className="text-base text-gray-700 leading-relaxed mb-1 text-balance">
+                  {item.description}
+                </p>
+                {item.stack && (
+                  <p className="text-sm text-gray-500">
+                    <span className="font-medium text-[#1e2a38]">
+                      Tech Stack:
+                    </span>{" "}
+                    {item.stack.map((tech, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="inline-block mr-2"
+                        title={tech}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </p>
-                  {item.stack && (
-                    <p className="text-sm text-gray-500">
-                      <span className="font-medium text-[#1e2a38]">
-                        Tech Stack:
-                      </span>{" "}
-                      {item.stack.map((tech, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="inline-block mr-2"
-                          title={tech}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                </>
+                )}
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
 
-        {/* Download Résumé CTA */}
+        {/* Resume CTA */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 10 }}

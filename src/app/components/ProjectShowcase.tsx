@@ -133,7 +133,7 @@ const projects = [
       { phase: "Week 3", detail: "Mobile polish and testing" },
     ],
     images: ["/images/milebird-ui-1.png", "/images/milebird-ui-2.png"],
-    repo: "https://github.com/yourusername/milebird",
+    repo: "https://github.com/advancedsoftwaresolutions/milebird",
     tag: "Mobile App",
   },
   {
@@ -205,7 +205,7 @@ export default function ProjectShowcase() {
               setOpen(proj);
               setView("desktop");
             }}
-            className="cursor-pointer rounded-xl border border-gray-200 bg-white p-6 shadow-md hover:shadow-lg transition"
+            className="cursor-pointer rounded-xl border border-gray-200 bg-white p-6 shadow-md hover:shadow-lg transition z-10"
           >
             <span className="text-xs mb-2 inline-block bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">
               {proj.tag}
@@ -238,7 +238,7 @@ export default function ProjectShowcase() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="bg-white p-6 rounded-xl border border-gray-200 shadow hover:shadow-md transition"
+            className="bg-white p-6 rounded-xl border border-gray-200 shadow hover:shadow-md transition z-10"
           >
             <h3 className="font-semibold text-[#0f172a] mb-1 text-sm">
               Top Repo
@@ -251,7 +251,7 @@ export default function ProjectShowcase() {
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="bg-white p-6 rounded-xl border border-gray-200 shadow hover:shadow-md transition"
+            className="bg-white p-6 rounded-xl border border-gray-200 shadow hover:shadow-md transition z-10"
           >
             <h3 className="font-semibold text-[#0f172a] mb-1 text-sm">
               Contributions

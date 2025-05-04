@@ -31,9 +31,9 @@ export default function AboutSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="relative w-full min-h-screen flex items-center justify-center px-4 py-24 overflow-hidden bg-slate-50"
+      className="relative w-full min-h-screen flex items-center justify-center px-4 py-24 overflow-hidden bg-transparent"
     >
-      {/* Animated glow ring behind card */}
+      {/* Animated glow background ring */}
       <motion.div
         className="absolute w-[480px] h-[480px] rounded-full bg-[#1e2a38]/10 blur-3xl z-0"
         animate={{ scale: [1, 1.04, 1], opacity: [0.15, 0.22, 0.15] }}
@@ -42,14 +42,14 @@ export default function AboutSection() {
 
       {/* Glassmorphic content card */}
       <motion.div
-        className="relative z-10 max-w-3xl w-full rounded-xl bg-white/60 backdrop-blur-lg border border-white/30 shadow-2xl px-8 py-12"
+        className="relative z-10 max-w-3xl w-full rounded-xl bg-white/70 backdrop-blur-md ring-1 ring-white/20 shadow-2xl px-8 py-12 selection:bg-blue-100 selection:text-blue-900"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
       >
         <motion.h2
-          className="text-4xl font-bold mb-3 tracking-tight text-[#1e2a38]"
+          className="text-4xl font-bold mb-3 tracking-tight text-[#1e2a38] text-balance"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -69,13 +69,14 @@ export default function AboutSection() {
         {paragraphs.map((text, i) => (
           <motion.p
             key={i}
-            className="text-gray-800 text-base leading-relaxed mb-5 last:mb-0"
+            className="text-gray-800 text-base leading-relaxed mb-5 last:mb-0 text-balance"
             variants={paragraphVariants}
             custom={i}
           >
             {text}
           </motion.p>
         ))}
+
         <motion.div
           className="mt-10 border-t pt-6 border-gray-200"
           initial={{ opacity: 0, y: 10 }}
@@ -86,7 +87,7 @@ export default function AboutSection() {
             ease: "easeOut",
           }}
         >
-          <p className="italic text-gray-600 text-base leading-relaxed mb-3">
+          <p className="italic text-gray-600 text-base leading-relaxed text-balance">
             “Great software isn’t just built — it’s architected, refined, and
             delivered with purpose.”
           </p>
