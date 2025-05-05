@@ -324,7 +324,7 @@ export default function ProjectShowcase() {
 
         <div className="mt-10 text-center">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/roaring-lion-33"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-sm font-medium text-blue-600 hover:underline"
