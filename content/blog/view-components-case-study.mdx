@@ -1,0 +1,207 @@
+export const metadata = {
+  title: "The Case for ViewComponents in Rails: Structure, Reuse, and Testing",
+  date: "2025-05-06",
+  summary:
+    "Why ViewComponent is a must-have in modern Rails apps — and how it can transform your UI architecture into something scalable, testable, and beautifully modular.",
+  image: "/images/blog-viewcomponents-case.jpg",
+};
+
+# The Case for ViewComponents in Rails: Structure, Reuse, and Testing
+
+Rails views can get messy. **Fast.**
+
+What starts as a clean, minimal `show.html.erb` file can quickly balloon into a sprawling mess of conditional logic, loops, partials, and helpers all tangled together — especially when you're building productized features with dynamic UI.
+
+If you've ever opened a 400-line `.html.erb` file and had no idea what part renders what, you're not alone.
+
+This is where [ViewComponent](https://viewcomponent.org/) comes in.
+
+---
+
+## What is ViewComponent?
+
+ViewComponent is a framework by GitHub that brings component-based architecture to Rails views. It lets you build **reusable**, **testable** Ruby objects that render chunks of HTML.
+
+> Think React components — but server-side, and native to the Rails stack.
+
+Each component is a Ruby class with its own template and optional helpers. It’s fast, clean, and encourages better separation of concerns.
+
+---
+
+## Why Use ViewComponent?
+
+Three reasons: **structure**, **reuse**, and **testing**.
+
+### 1. 🧱 Structure: Keep Your Views Sane
+
+With ViewComponent, each piece of your UI has a single responsibility — and a home.
+
+Instead of dumping logic into massive `.erb` files or relying on fragile partials with `locals`, you encapsulate each UI element as a standalone class. You pass it data, and it renders exactly one thing.
+
+#### Example
+
+```ruby
+# app/components/ui/card_component.rb
+class Ui::CardComponent < ViewComponent::Base
+  def initialize(title:, body:, icon: nil)
+    @title = title
+    @body = body
+    @icon = icon
+  end
+end
+```
+
+```erb
+<!-- app/components/ui/card_component.html.erb -->
+<div class="rounded-xl shadow p-4 bg-white">
+  <% if @icon %>
+    <%= @icon %>
+  <% end %>
+  <h2 class="text-lg font-bold mb-2"><%= @title %></h2>
+  <p class="text-gray-700"><%= @body %></p>
+</div>
+```
+
+```erb
+<%= render Ui::CardComponent.new(title: "Welcome", body: "Thanks for signing up.") %>
+```
+
+Result? Cleaner, more readable, and easier to debug views.
+
+---
+
+### 2. ♻️ Reuse: Stop Rewriting the Same Markup
+
+Imagine you're building a dashboard with multiple metrics cards. Without components, you'd copy/paste a lot of repeated HTML and Tailwind classes.
+
+With components, you DRY it up:
+
+```erb
+<%= render Ui::MetricCardComponent.new(
+  label: "Monthly Revenue",
+  value: "$42,000",
+  icon: "DollarSign"
+) %>
+```
+
+Each component becomes a **design token**: composable, centralized, and themeable.
+
+We use components for:
+
+- `BadgeComponent` for status labels
+- `AvatarComponent` for user profile photos
+- `Table::RowComponent` to abstract table row logic
+- `HeroComponent` to standardize layout blocks across pages
+
+It’s not just atomic UI — we build **whole page sections** like `Projects::TimelineComponent`.
+
+---
+
+### 3. ✅ Testing: No More “It’s in the View…”
+
+**One of the biggest wins?** You can test components in isolation.
+
+No more spinning up full feature specs just to verify that the “Active” badge appears when a user is enabled.
+
+```ruby
+# test/components/user_badge_component_test.rb
+require "test_helper"
+
+class UserBadgeComponentTest < ViewComponent::TestCase
+  test "renders active badge" do
+    render_inline(UserBadgeComponent.new(status: :active))
+
+    assert_text "Active"
+    assert_css ".badge--green"
+  end
+end
+```
+
+You can also snapshot output, test edge cases, and skip full Rails boots.
+
+---
+
+## Real Example: Turbo-Friendly Modal Component
+
+Here’s a real-world example from one of our Rails apps.
+
+We needed a modal that could:
+
+- Be triggered via Turbo
+- Reuse layout shell
+- Accept custom content
+- Animate open/close
+
+So we built this:
+
+```ruby
+# app/components/ui/modal_component.rb
+class Ui::ModalComponent < ViewComponent::Base
+  def initialize(id:, title: nil, size: "md")
+    @id = id
+    @title = title
+    @size = size
+  end
+end
+```
+
+```erb
+<!-- app/components/ui/modal_component.html.erb -->
+<turbo-frame id="<%= @id %>">
+  <dialog data-controller="modal" class="ui-modal <%= @size %>">
+    <% if @title.present? %>
+      <header><h2><%= @title %></h2></header>
+    <% end %>
+    <div data-modal-target="body">
+      <%= content %>
+    </div>
+    <footer>
+      <button data-action="modal#close">Close</button>
+    </footer>
+  </dialog>
+</turbo-frame>
+```
+
+Usage:
+
+```erb
+<%= render Ui::ModalComponent.new(id: "settings_modal", title: "Edit Settings") do %>
+  <%= render SettingsFormComponent.new(user: current_user) %>
+<% end %>
+```
+
+It’s testable, composable, and plugs cleanly into Stimulus + Turbo Streams.
+
+---
+
+## When _Not_ to Use ViewComponents
+
+Not every UI fragment needs its own class.
+
+Skip components if:
+
+- It’s static, throwaway markup
+- It only appears once and won’t be reused
+- You’re prototyping something quickly
+
+But if it has **branching logic**, is used **3+ times**, or deserves **consistency and tests** — use a component.
+
+---
+
+## Final Thoughts
+
+ViewComponents have completely changed how I build Rails apps.
+
+Instead of views being a dumping ground, they’ve become a _canvas_ of composed, tested, and beautiful UI modules.
+
+Design systems become code.  
+Bugs get caught early.  
+Product teams move faster.
+
+> If you’re not using ViewComponent in your Rails app, now’s the time to start. You’ll never want to go back.
+
+---
+
+Want examples?  
+Check out my [ZeroToOne UI kit](https://github.com/your-link)  
+Or browse live components in [DaVinci](https://your-app-link.com).

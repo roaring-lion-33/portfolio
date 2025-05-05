@@ -6,6 +6,8 @@ import ContactSection from "./components/ContactSection";
 import FloatingCTA from "./components/FloatingCTA";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import type { Metadata } from "next";
+import { getStaticPosts } from "./lib/getStaticPosts";
+import BlogCard from "./components/BlogCard";
 
 export const metadata: Metadata = {
   title: "Frank Camp – Full Stack Developer",
@@ -53,7 +55,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const posts = (await getStaticPosts()).slice(0, 3);
   return (
     <main className="relative bg-gradient-to-br from-slate-50 to-white text-gray-900 min-h-screen antialiased selection:bg-blue-100 selection:text-blue-900">
       <HeroSection />
@@ -61,6 +64,20 @@ export default function Home() {
       <ExperienceTimeline />
       <SkillsSection />
       <ProjectShowcase />
+      <section className="px-6 md:px-12 py-20 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">Latest Blog Posts</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {posts.map(({ slug, metadata }) => (
+            <BlogCard
+              key={slug}
+              slug={slug}
+              title={metadata.title}
+              date={metadata.date}
+              summary={metadata.summary}
+            />
+          ))}
+        </div>
+      </section>
       <ContactSection />
       <FloatingCTA />
     </main>
